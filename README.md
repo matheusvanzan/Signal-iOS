@@ -1,4 +1,4 @@
-# Signal for iOS
+# Signal for iOS (EBChat 2)
 
 Signal is a messaging app for simple private communication with friends.
 

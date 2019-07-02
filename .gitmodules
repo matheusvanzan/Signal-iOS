@@ -1,6 +1,6 @@
 [submodule "Carthage"]
 	path = Carthage
-	url = https://github.com/signalapp/Signal-Carthage.git
+	url = https://github.com/matheusvanzan/Signal-Carthage.git
 [submodule "Pods"]
 	path = Pods
-	url = https://github.com/signalapp/Signal-Pods.git
+	url = https://github.com/matheusvanzan/Signal-Pods.git

@@ -1,6 +1,9 @@
 # Signal for iOS (EBChat 2)
 
+pod install --repo-update
+
 Signal is a messaging app for simple private communication with friends.
+
 
 [![Available on the App Store](http://cl.ly/WouG/Download_on_the_App_Store_Badge_US-UK_135x40.svg)](https://itunes.apple.com/us/app/signal-private-messenger/id874139669?mt=8)
 

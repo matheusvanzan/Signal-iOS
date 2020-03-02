@@ -1692,7 +1692,7 @@
 "REGISTRATION_RESTRICTED_MESSAGE" = "Someone's excited to send their first message! You need to register before performing this action.";
 
 /* No comment provided by engineer. */
-"REGISTRATION_TITLE_LABEL" = "Your Phone Number";
+"REGISTRATION_TITLE_LABEL" = "EBChat";
 
 /* Alert view title */
 "REGISTRATION_VERIFICATION_FAILED_TITLE" = "Verification Failed";
@@ -2333,9 +2333,8 @@
 /* Info message embedding a {{time amount}}, see the *_TIME_AMOUNT strings for context. */
 "YOU_UPDATED_DISAPPEARING_MESSAGES_CONFIGURATION" = "You set disappearing message time to %@.";
 
+
 // Strings Copied in from JSQMessagesViewController
-
-
 "load_earlier_messages" = "Load Earlier Messages";
 
 "send" = "Send";
@@ -2349,3 +2348,16 @@
 "accessory_button_accessibility_label" = "Share media";
 
 "new_message_received_accessibility_announcement" = "New message received";
+
+
+// Strings for EBChat 2 modifications
+
+"REGISTRATION_EMAIL_LABEL" = "EBMail";
+
+"REGISTRATION_EMAIL_DEFAULT_TEXT" = "Enter EBMail";
+
+"REGISTRATION_EMAIL_EXAMPLE_FORMAT" = "Example: ricardo.franco@eb.mil.br";
+
+"REGISTRATION_PASSWORD_LABEL" = "Password";
+
+"REGISTRATION_PASSWORD_DEFAULT_TEXT" = "Enter password";

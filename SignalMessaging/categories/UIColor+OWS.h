@@ -47,6 +47,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
 
+@property (class, readonly, nonatomic) UIColor *ows_EBLightGreenColor;
+@property (class, readonly, nonatomic) UIColor *ows_EBDarkGreenColor;
+
 @property (class, readonly, nonatomic) UIColor *ows_signalBlueColor;
 @property (class, readonly, nonatomic) UIColor *ows_greenColor;
 @property (class, readonly, nonatomic) UIColor *ows_redColor;

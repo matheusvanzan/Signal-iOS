@@ -29,6 +29,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -
 
++ (UIColor *)ows_EBLightGreenColor
+{
+    // #e5ffd4 - rgba(229, 255, 212, 1) - 0.898039215686275 1 0.831372549019608
+    return [UIColor colorWithRed:0.898039215686275 green:1 blue:0.831372549019608 alpha:1.];
+}
+
++ (UIColor *)ows_EBDarkGreenColor
+{
+    // #637D36 - rgba(99, 125, 54, 1) - 0.388235294117647 0.490196078431373 0.211764705882353
+    return [UIColor colorWithRed:0.388235294117647 green:0.490196078431373 blue:0.211764705882353 alpha:1.];
+}
+
 + (UIColor *)ows_signalBrandBlueColor
 {
     return [UIColor colorWithRed:0.1135657504 green:0.4787300229 blue:0.89595204589999999 alpha:1.];

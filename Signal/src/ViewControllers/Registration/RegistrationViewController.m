@@ -32,8 +32,15 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
 @property (nonatomic) NSString *callingCode;
 
 @property (nonatomic) UILabel *countryCodeLabel;
+
 @property (nonatomic) UITextField *phoneNumberTextField;
 @property (nonatomic) UILabel *examplePhoneNumberLabel;
+
+@property (nonatomic) UITextField *emailTextField;
+@property (nonatomic) UILabel *exampleEmailLabel;
+
+@property (nonatomic) UITextField *passwordTextField;
+
 @property (nonatomic) OWSFlatButton *activateButton;
 @property (nonatomic) UIActivityIndicatorView *spinnerView;
 
@@ -71,7 +78,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
 
     UIView *headerWrapper = [UIView containerView];
     [self.view addSubview:headerWrapper];
-    headerWrapper.backgroundColor = UIColor.ows_signalBrandBlueColor;
+    headerWrapper.backgroundColor = UIColor.ows_EBDarkGreenColor;
     [headerWrapper autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
 
     UILabel *headerLabel = [UILabel new];
@@ -129,6 +136,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
     const CGFloat kRowHMargin = 20.f;
     const CGFloat kSeparatorHeight = 1.f;
     const CGFloat kExamplePhoneNumberVSpacing = 8.f;
+    const CGFloat kExampleEmailVSpacing = 8.f;
     const CGFloat fontSizePoints = ScaleFromIPhone5To7Plus(16.f, 20.f);
 
     UIView *contentView = [UIView containerView];
@@ -160,7 +168,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
 
     UILabel *countryCodeLabel = [UILabel new];
     self.countryCodeLabel = countryCodeLabel;
-    countryCodeLabel.textColor = [UIColor ows_materialBlueColor];
+    countryCodeLabel.textColor = [UIColor ows_EBDarkGreenColor];
     countryCodeLabel.font = [UIFont ows_mediumFontWithSize:fontSizePoints + 2.f];
     [countryRow addSubview:countryCodeLabel];
     [countryCodeLabel autoVCenterInSuperview];
@@ -181,8 +189,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
     [phoneNumberRow autoSetDimension:ALDimensionHeight toSize:kRowHeight];
 
     UILabel *phoneNumberLabel = [UILabel new];
-    phoneNumberLabel.text
-        = NSLocalizedString(@"REGISTRATION_PHONENUMBER_BUTTON", @"Label for the phone number textfield");
+    phoneNumberLabel.text = NSLocalizedString(@"REGISTRATION_PHONENUMBER_BUTTON", @"Label for the phone number textfield");
     phoneNumberLabel.textColor = [UIColor blackColor];
     phoneNumberLabel.font = [UIFont ows_mediumFontWithSize:fontSizePoints];
     [phoneNumberRow addSubview:phoneNumberLabel];
@@ -199,10 +206,9 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
     phoneNumberTextField.textAlignment = NSTextAlignmentRight;
     phoneNumberTextField.delegate = self;
     phoneNumberTextField.keyboardType = UIKeyboardTypeNumberPad;
-    phoneNumberTextField.placeholder = NSLocalizedString(
-        @"REGISTRATION_ENTERNUMBER_DEFAULT_TEXT", @"Placeholder text for the phone number textfield");
+    phoneNumberTextField.placeholder = NSLocalizedString(@"REGISTRATION_ENTERNUMBER_DEFAULT_TEXT", @"Placeholder text for the phone number textfield");
     self.phoneNumberTextField = phoneNumberTextField;
-    phoneNumberTextField.textColor = [UIColor ows_materialBlueColor];
+    phoneNumberTextField.textColor = [UIColor ows_EBDarkGreenColor];
     phoneNumberTextField.font = [UIFont ows_mediumFontWithSize:fontSizePoints + 2];
     [phoneNumberRow addSubview:phoneNumberTextField];
     [phoneNumberTextField autoVCenterInSuperview];
@@ -228,15 +234,112 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
                          ofView:phoneNumberRow
                      withOffset:examplePhoneNumberLabel.font.lineHeight];
     [separatorView2 autoSetDimension:ALDimensionHeight toSize:kSeparatorHeight];
-
+    
+    // E-mail
+//    UIView *emailRow = [UIView containerView];
+//    [contentView addSubview:emailRow];
+//    [emailRow autoPinLeadingAndTrailingToSuperviewMargin];
+//    [emailRow autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:separatorView2];
+//    [emailRow autoSetDimension:ALDimensionHeight toSize:kRowHeight];
+//
+//    UILabel *emailLabel = [UILabel new];
+//    emailLabel.text = NSLocalizedString(@"REGISTRATION_EMAIL_LABEL", @"Label for the email textfield");
+//    emailLabel.textColor = [UIColor blackColor];
+//    emailLabel.font = [UIFont ows_mediumFontWithSize:fontSizePoints];
+//    [emailRow addSubview:emailLabel];
+//    [emailLabel autoVCenterInSuperview];
+//    [emailLabel autoPinLeadingToSuperviewMargin];
+//
+//    UITextField *emailTextField;
+//    if (UIDevice.currentDevice.isShorterThanIPhone5) {
+//        emailTextField = [DismissableTextField new];
+//    } else {
+//        emailTextField = [UITextField new];
+//    }
+//
+//    emailTextField.textAlignment = NSTextAlignmentRight;
+//    emailTextField.delegate = self;
+//    emailTextField.keyboardType = UIKeyboardTypeDefault;
+//    emailTextField.placeholder = NSLocalizedString(@"REGISTRATION_EMAIL_DEFAULT_TEXT", @"Placeholder text for the phone number textfield");
+//    self.emailTextField = emailTextField;
+//    emailTextField.textColor = [UIColor ows_EBDarkGreenColor];
+//    emailTextField.font = [UIFont ows_mediumFontWithSize:fontSizePoints + 2];
+//    [emailRow addSubview:emailTextField];
+//    [emailTextField autoVCenterInSuperview];
+//    [emailTextField autoPinTrailingToSuperviewMargin];
+//
+//    UILabel *exampleEmailLabel = [UILabel new];
+//    self.exampleEmailLabel = exampleEmailLabel;
+//    exampleEmailLabel.text = NSLocalizedString(@"REGISTRATION_EMAIL_EXAMPLE_FORMAT", @"Example format for email textfield");
+//    exampleEmailLabel.font = [UIFont ows_regularFontWithSize:fontSizePoints - 2.f];
+//    exampleEmailLabel.textColor = [UIColor colorWithWhite:0.5f alpha:1.f];
+//    [contentView addSubview:exampleEmailLabel];
+//    [exampleEmailLabel autoPinTrailingToSuperviewMargin];
+//    [exampleEmailLabel autoPinEdge:ALEdgeTop
+//                                  toEdge:ALEdgeBottom
+//                                  ofView:emailTextField
+//                              withOffset:kExampleEmailVSpacing];
+//
+//    UIView *separatorView3 = [UIView new];
+//    separatorView3.backgroundColor = [UIColor colorWithWhite:0.75f alpha:1.f];
+//    [contentView addSubview:separatorView3];
+//    [separatorView3 autoPinWidthToSuperview];
+//    [separatorView3 autoPinEdge:ALEdgeTop
+//                         toEdge:ALEdgeBottom
+//                         ofView:emailRow
+//                     withOffset:exampleEmailLabel.font.lineHeight];
+//    [separatorView3 autoSetDimension:ALDimensionHeight toSize:kSeparatorHeight];
+    
+//    // Senha
+//    UIView *passwordRow = [UIView containerView];
+//    [contentView addSubview:passwordRow];
+//    [passwordRow autoPinLeadingAndTrailingToSuperviewMargin];
+//    [passwordRow autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:separatorView3];
+//    [passwordRow autoSetDimension:ALDimensionHeight toSize:kRowHeight];
+//
+//    UILabel *passwordLabel = [UILabel new];
+//    passwordLabel.text = NSLocalizedString(@"REGISTRATION_PASSWORD_LABEL", @"Label for the email textfield");
+//    passwordLabel.textColor = [UIColor blackColor];
+//    passwordLabel.font = [UIFont ows_mediumFontWithSize:fontSizePoints];
+//    [passwordRow addSubview:passwordLabel];
+//    [passwordLabel autoVCenterInSuperview];
+//    [passwordLabel autoPinLeadingToSuperviewMargin];
+//
+//    UITextField *passwordTextField;
+//    if (UIDevice.currentDevice.isShorterThanIPhone5) {
+//        passwordTextField = [DismissableTextField new];
+//    } else {
+//        passwordTextField = [UITextField new];
+//    }
+//
+//    passwordTextField.textAlignment = NSTextAlignmentRight;
+//    passwordTextField.delegate = self;
+//    passwordTextField.keyboardType = UIKeyboardTypeDefault;
+//    passwordTextField.placeholder = NSLocalizedString(@"REGISTRATION_PASSWORD_DEFAULT_TEXT", @"Placeholder text for the phone number textfield");
+//    self.passwordTextField = passwordTextField;
+//    passwordTextField.textColor = [UIColor ows_EBDarkGreenColor];
+//    passwordTextField.font = [UIFont ows_mediumFontWithSize:fontSizePoints + 2];
+//    [passwordRow addSubview:passwordTextField];
+//    [passwordTextField autoVCenterInSuperview];
+//    [passwordTextField autoPinTrailingToSuperviewMargin];
+//
+//    UIView *separatorView4 = [UIView new];
+//    separatorView4.backgroundColor = [UIColor colorWithWhite:0.75f alpha:1.f];
+//    [contentView addSubview:separatorView4];
+//    [separatorView4 autoPinWidthToSuperview];
+//    [separatorView4 autoPinEdge:ALEdgeTop
+//                         toEdge:ALEdgeBottom
+//                         ofView:passwordRow];
+//    [separatorView4 autoSetDimension:ALDimensionHeight toSize:kSeparatorHeight];
+    
     // Activate Button
     const CGFloat kActivateButtonHeight = 47.f;
-    // NOTE: We use ows_signalBrandBlueColor instead of ows_materialBlueColor
+    // NOTE: We use ows_EBDarkGreenColor instead of ows_EBDarkGreenColor
     //       throughout the onboarding flow to be consistent with the headers.
     OWSFlatButton *activateButton = [OWSFlatButton buttonWithTitle:NSLocalizedString(@"REGISTRATION_VERIFY_DEVICE", @"")
                                                               font:[OWSFlatButton fontForHeight:kActivateButtonHeight]
                                                         titleColor:[UIColor whiteColor]
-                                                   backgroundColor:[UIColor ows_signalBrandBlueColor]
+                                                   backgroundColor:[UIColor ows_EBDarkGreenColor]
                                                             target:self
                                                           selector:@selector(didTapRegisterButton)];
     self.activateButton = activateButton;
@@ -245,8 +348,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
     [activateButton autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:separatorView2 withOffset:15];
     [activateButton autoSetDimension:ALDimensionHeight toSize:kActivateButtonHeight];
 
-    UIActivityIndicatorView *spinnerView =
-        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    UIActivityIndicatorView *spinnerView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     self.spinnerView = spinnerView;
     [activateButton addSubview:spinnerView];
     [spinnerView autoVCenterInSuperview];
@@ -260,7 +362,7 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
         @"one line label below submit button on registration screen, which links to an external webpage.");
     UIButton *bottomLegalLinkButton = [UIButton new];
     bottomLegalLinkButton.titleLabel.font = [UIFont ows_regularFontWithSize:ScaleFromIPhone5To7Plus(13.f, 15.f)];
-    [bottomLegalLinkButton setTitleColor:UIColor.ows_materialBlueColor forState:UIControlStateNormal];
+    [bottomLegalLinkButton setTitleColor:UIColor.ows_EBDarkGreenColor forState:UIControlStateNormal];
     [bottomLegalLinkButton setTitle:bottomTermsLinkText forState:UIControlStateNormal];
     [contentView addSubview:bottomLegalLinkButton];
     [bottomLegalLinkButton addTarget:self
@@ -387,13 +489,14 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
 - (void)didTapRegisterButton
 {
     NSString *phoneNumberText = [_phoneNumberTextField.text ows_stripped];
+    
+    //NSLog(@" --- phoneNumberText: %@", phoneNumberText);
+    
     if (phoneNumberText.length < 1) {
-        [OWSAlerts
-            showAlertWithTitle:NSLocalizedString(@"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE",
-                                   @"Title of alert indicating that users needs to enter a phone number to register.")
-                       message:
-                           NSLocalizedString(@"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_MESSAGE",
-                               @"Message of alert indicating that users needs to enter a phone number to register.")];
+        [OWSAlerts showAlertWithTitle:NSLocalizedString(@"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_TITLE",
+                                                        @"Title of alert indicating that users needs to enter a phone number to register.")
+                              message:NSLocalizedString(@"REGISTRATION_VIEW_NO_PHONE_NUMBER_ALERT_MESSAGE",
+                                                        @"Message of alert indicating that users needs to enter a phone number to register.")];
         return;
     }
 
@@ -401,10 +504,12 @@ NSString *const kKeychainKey_LastRegisteredPhoneNumber = @"kKeychainKey_LastRegi
     NSString *phoneNumber = [NSString stringWithFormat:@"%@%@", _callingCode, phoneNumberText];
     PhoneNumber *localNumber = [PhoneNumber tryParsePhoneNumberFromUserSpecifiedText:phoneNumber];
     NSString *parsedPhoneNumber = localNumber.toE164;
+    
+    //NSLog(@" --- parsedPhoneNumber: %@", parsedPhoneNumber);
+    
     if (parsedPhoneNumber.length < 1) {
-        [OWSAlerts showAlertWithTitle:
-                       NSLocalizedString(@"REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_TITLE",
-                           @"Title of alert indicating that users needs to enter a valid phone number to register.")
+        [OWSAlerts showAlertWithTitle:NSLocalizedString(@"REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_TITLE",
+                                                        @"Title of alert indicating that users needs to enter a valid phone number to register.")
                               message:NSLocalizedString(@"REGISTRATION_VIEW_INVALID_PHONE_NUMBER_ALERT_MESSAGE",
                                           @"Message of alert indicating that users needs to enter a valid phone number "
                                           @"to register.")];

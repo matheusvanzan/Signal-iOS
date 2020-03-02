@@ -43,6 +43,10 @@
     NSString *path = [bundle pathForResource:service ofType:@"cer"];
 
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        
+        NSLog(@"\n\nMissing signing certificate for service %@.\n\n", service);
+        
+        
         OWSRaiseException(@"Missing server certificate", @"Missing signing certificate for service %@", service);
     }
 
@@ -52,6 +56,7 @@
 
 
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust forDomain:(NSString *)domain {
+    
     NSMutableArray *policies = [NSMutableArray array];
     [policies addObject:(__bridge_transfer id)SecPolicyCreateSSL(true, (__bridge CFStringRef)domain)];
 

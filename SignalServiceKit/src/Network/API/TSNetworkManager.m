@@ -87,13 +87,16 @@ typedef void (^failureBlock)(NSURLSessionDataTask *task, NSError *error);
 
     // TODO: Remove this logging when the call connection issues have been resolved.
     TSNetworkManagerSuccess success = ^(NSURLSessionDataTask *task, _Nullable id responseObject) {
-        DDLogInfo(@"%@ request succeeded : %@", self.logTag, request);
+        DDLogInfo(@"%@ AA request succeeded : %@", self.logTag, request);
 
         if (request.shouldHaveAuthorizationHeaders) {
+            DDLogInfo(@"Dentro do if");
             [TSAccountManager.sharedInstance setIsDeregistered:NO];
         }
 
+        DDLogInfo(@"Antes do successBlock");
         successBlock(task, responseObject);
+        DDLogInfo(@"Depois do successBlock");
 
         [OutageDetection.sharedManager reportConnectionSuccess];
     };
@@ -103,7 +106,7 @@ typedef void (^failureBlock)(NSURLSessionDataTask *task, NSError *error);
     // [OWSSignalService signalServiceSessionManager] always returns a new instance of
     // session manager, so its safe to reconfigure it here.
     sessionManager.completionQueue = completionQueue;
-
+    
     if ([request isKindOfClass:[TSVerifyCodeRequest class]]) {
         // We plant the Authorization parameter ourselves, no need to double add.
         [sessionManager.requestSerializer

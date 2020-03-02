@@ -194,6 +194,7 @@ NS_ASSUME_NONNULL_BEGIN
                                textSecureAccountsAPI,
                                [self stringForTransport:transport],
                                phoneNumber];
+    
     TSRequest *request = [TSRequest requestWithUrl:[NSURL URLWithString:path] method:@"GET" parameters:@{}];
     request.shouldHaveAuthorizationHeaders = NO;
     return request;
